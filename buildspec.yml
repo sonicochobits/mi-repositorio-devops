@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Instalando dependencias..."
+      - pip install -r app/requirements.txt
+
+  build:
+    commands:
+      - echo "Construyendo la imagen de Docker..."
+      - docker build -t mi-app-flask ./app
+
+  post_build:
+    commands:
+      - echo "Build completado correctamente el $(date)"
+
+artifacts:
+  files:
+    - '**/*'
